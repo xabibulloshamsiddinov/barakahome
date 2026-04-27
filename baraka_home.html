@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Baraka Home | Shopping Website</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f7f5f0;
+      color: #222;
+    }
+
+    header {
+      background-color: #ffffff;
+      padding: 20px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #7a4f24;
+    }
+
+    .logo span {
+      color: #c98b3b;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      margin-left: 25px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #c98b3b;
+    }
+
+    .hero {
+      min-height: 80vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+        url("https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      padding: 0 8%;
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 600px;
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #c98b3b;
+      color: white;
+      padding: 14px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #7a4f24;
+      transform: translateY(-3px);
+    }
+
+    .section {
+      padding: 70px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 45px;
+      color: #7a4f24;
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+
+    .category-card {
+      background-color: white;
+      padding: 35px 20px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      transition: 0.3s;
+    }
+
+    .category-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .category-card h3 {
+      color: #7a4f24;
+      margin-bottom: 10px;
+      font-size: 24px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .product-card {
+      background-color: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: 0.3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 20px;
+    }
+
+    .product-info h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .product-info p {
+      color: #666;
+      margin-bottom: 12px;
+    }
+
+    .price {
+      font-size: 20px;
+      font-weight: bold;
+      color: #c98b3b;
+      margin-bottom: 15px;
+    }
+
+    .cart-btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #7a4f24;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .cart-btn:hover {
+      background-color: #c98b3b;
+    }
+
+    .about {
+      background-color: #fff;
+      border-radius: 20px;
+      padding: 45px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .about p {
+      max-width: 850px;
+      margin: auto;
+      line-height: 1.8;
+      font-size: 18px;
+      color: #555;
+    }
+
+    .newsletter {
+      background-color: #7a4f24;
+      color: white;
+      text-align: center;
+      padding: 60px 8%;
+    }
+
+    .newsletter h2 {
+      font-size: 34px;
+      margin-bottom: 15px;
+    }
+
+    .newsletter p {
+      margin-bottom: 25px;
+      font-size: 18px;
+    }
+
+    .newsletter form {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .newsletter input {
+      padding: 14px;
+      width: 300px;
+      border: none;
+      border-radius: 30px;
+      outline: none;
+    }
+
+    .newsletter button {
+      padding: 14px 28px;
+      border: none;
+      border-radius: 30px;
+      background-color: #c98b3b;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    footer {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 25px;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      nav a {
+        margin: 0 8px;
+        font-size: 14px;
+      }
+
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+
+      .section-title {
+        font-size: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Baraka <span>Home</span></div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#categories">Categories</a>
+      <a href="#products">Products</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Make Your Home Beautiful</h1>
+      <p>Shop stylish furniture, cozy decorations, and modern home essentials at Baraka Home.</p>
+      <a href="#products" class="btn">Shop Now</a>
+    </div>
+  </section>
+
+  <section class="section" id="categories">
+    <h2 class="section-title">Shop by Category</h2>
+    <div class="categories">
+      <div class="category-card">
+        <h3>Furniture</h3>
+        <p>Sofas, chairs, tables, and beds.</p>
+      </div>
+      <div class="category-card">
+        <h3>Kitchen</h3>
+        <p>Useful tools for your kitchen.</p>
+      </div>
+      <div class="category-card">
+        <h3>Decor</h3>
+        <p>Beautiful items for every room.</p>
+      </div>
+      <div class="category-card">
+        <h3>Lighting</h3>
+        <p>Lamps and lights for cozy spaces.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="products">
+    <h2 class="section-title">Featured Products</h2>
+    <div class="products">
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&w=800&q=80" alt="Modern Sofa" />
+        <div class="product-info">
+          <h3>Modern Sofa</h3>
+          <p>Comfortable sofa for your living room.</p>
+          <div class="price">$249</div>
+          <button class="cart-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80" alt="Cozy Bed" />
+        <div class="product-info">
+          <h3>Cozy Bed</h3>
+          <p>Soft and stylish bed for peaceful sleep.</p>
+          <div class="price">$399</div>
+          <button class="cart-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&w=800&q=80" alt="Table Lamp" />
+        <div class="product-info">
+          <h3>Table Lamp</h3>
+          <p>Warm lighting for your bedroom or office.</p>
+          <div class="price">$49</div>
+          <button class="cart-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=800&q=80" alt="Wooden Chair" />
+        <div class="product-info">
+          <h3>Wooden Chair</h3>
+          <p>Simple and elegant chair for your home.</p>
+          <div class="price">$89</div>
+          <button class="cart-btn">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="about">
+      <h2 class="section-title">About Baraka Home</h2>
+      <p>
+        Baraka Home is your trusted shopping destination for beautiful, affordable,
+        and high-quality home products. Our goal is to help every family create a
+        warm, comfortable, and stylish living space.
+      </p>
+    </div>
+  </section>
+
+  <section class="newsletter" id="contact">
+    <h2>Get Special Offers</h2>
+    <p>Subscribe to receive discounts and new product updates.</p>
+    <form>
+      <input type="email" placeholder="Enter your email" required />
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Baraka Home. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
